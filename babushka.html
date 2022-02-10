@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Poppins:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <title>BABUSHKA</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      img {
+        max-width: 100%;
+        /* height: 300px; */
+        /* object-fit: cover; */
+      }
+
+      body {
+        color: #e4cdb4;
+        background-color: #014137;
+      }
+
+      p,
+      h2 {
+        color: #014137;
+      }
+
+      p,
+      button {
+        font-family: "Poppins", sans-serif;
+        font-weight: 100;
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        font-size: 2rem;
+      }
+
+      /* section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 5px;
+            grid-column: 2/3;
+            margin-left: 15rem;
+            margin-right: 15rem;
+        } */
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, 800px) 1fr;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+        grid-column: 2/3;
+      }
+
+      article {
+        margin: 1rem;
+        padding: 1rem;
+        /* border-radius: 25px; */
+        cursor: pointer;
+        background-color: #e4cdb4;
+      }
+
+      #popup article {
+        width: 40vw;
+        display: none;
+        margin: 0.5rem auto;
+        padding: 12px;
+        cursor: pointer;
+      }
+
+      /*BURGERMENU*/
+      header #menu {
+        margin: 0rem 1rem 1rem 1rem;
+        overflow-x: auto;
+        flex-direction: column;
+      }
+
+      #menuknap {
+        font-size: 3rem;
+        cursor: pointer;
+
+        display: flex;
+
+        justify-content: end;
+
+        margin-right: 3rem;
+      }
+      .hidden {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+
+        flex-direction: column;
+      }
+      @media (min-width: 600px) {
+        #menuknap {
+          display: none;
+        }
+
+        .hidden {
+          display: flex;
+        }
+
+        header #menu {
+          display: flex;
+          margin: 0rem 5rem 1rem 5rem;
+          overflow-x: unset;
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        ul {
+          flex-direction: row;
+        }
+      }
+      /* nav {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-evenly;
+        } */
+
+      a {
+        text-decoration: none;
+        color: #e4cdb4;
+      }
+
+      .logo {
+        display: inline-block;
+        background-color: #e4cdb4;
+        color: #014137;
+        font-family: "Amatic SC", cursive;
+        font-size: 3rem;
+        margin: 0;
+        padding: 0;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+
+      button:hover {
+        color: #014137;
+        background-color: #e4cdb4;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      button {
+        /* background-color: #e4cdb4; */
+        /* border-radius: 5px;
+            border-color: white; */
+        background: none;
+        border: none;
+        color: #e4cdb4;
+      }
+
+      .valgt {
+        color: #e4cdb4;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 30px;
+      }
+
+      /* NAVIGATIONEN FØLGER MED NÅR MAN SCROLLER*/
+      header {
+        position: sticky;
+        top: 0;
+        border-bottom: 3px solid #e4cdb4;
+        border-top: 3px solid #e4cdb4;
+        background-color: #014137;
+      }
+
+      /* #modal {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            position: fixed;
+            background-color: rgba(0, 0, 0, white);
+            border: 5px solid black
+        }
+
+        #modal article {
+            width: 60vw;
+            margin: 2em auto;
+            background-color: blue;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            cursor: pointer;
+        } */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2 class="logo">BISTRO BABUSHKA</h2>
+      <button id="menuknap">☰</button>
+      <nav class="hidden" id="menu">
+        <ul>
+          <button data-kategori="alle" class="valgt">Alle</button>
+          <button data-kategori="forretter">Forretter</button>
+          <button data-kategori="hovedretter">Hovedretter</button>
+          <button data-kategori="desserter">Desserter</button>
+          <button data-kategori="sideorders">Sideorders</button>
+          <button data-kategori="drikkevarer">Drikkevarer</button>
+        </ul>
+      </nav>
+    </header>
+
+    <aside id="popup">
+      <article id="modal">
+        <img src="" alt="" class="billede" />
+        <h2 class="navn"></h2>
+        <p class="langbeskrivelse"></p>
+        <p class="pris"></p>
+      </article>
+    </aside>
+    <main>
+      <section></section>
+    </main>
+    <template>
+      <article>
+        <img src="" alt="" class="billede" />
+        <h2 class="navn"></h2>
+        <p class="kortbeskrivelse"></p>
+        <p class="pris"></p>
+      </article>
+    </template>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+      let filter = "alle";
+      let menu;
+      function start() {
+        console.log("1");
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) =>
+          knap.addEventListener("click", filtrerMenuer)
+        );
+        hentData();
+      }
+      //eventListener knyttet til knapperne, der vælger hvilket filter der er aktivt
+      function filtrerMenuer() {
+        console.log("2");
+        filter = this.dataset.kategori; //sæt variabel "filter" til værdien af data-troende på den knap
+        document.querySelector(".valgt").classList.remove("valgt"); //fjern klassen valgt fra den knap
+        this.classList.add("valgt"); //marker den knap der klikkes på
+
+        visMenu(); //kald funktionen vis efter det nye filter er sat på
+
+        header.textContent = this.textContent;
+      }
+
+      const url = "https://babushka-dd8a.restdb.io/rest/menu";
+      const section = document.querySelector("section");
+      const template = document.querySelector("template").content;
+      const header = document.querySelector("header h1");
+      const modal = document.querySelector("#modal");
+
+      const options = {
+        headers: {
+          "x-apikey": "600ec2fb1346a1524ff12de4",
+        },
+      };
+
+      async function hentData() {
+        const respons = await fetch(url, options);
+        menu = await respons.json();
+        visMenu();
+      }
+
+      // function vis(json) {
+      //     console.log(json);
+      // }
+
+      // hentData();
+
+      function visMenu() {
+        console.log("menu");
+        section.textContent = "";
+        menu.forEach((ret) => {
+          //loop igennem json (menu)
+          if (filter == ret.kategori || filter == "alle") {
+            const klon = template.cloneNode(true);
+            klon.querySelector("img").src =
+              "medium/" + ret.billednavn + "-md.jpg";
+            klon.querySelector(".navn").textContent = ret.navn;
+            klon.querySelector(".kortbeskrivelse").textContent =
+              ret.kortbeskrivelse;
+            klon.querySelector(".pris").textContent =
+              "Pris: " + ret.pris + " ,-";
+
+            klon
+              .querySelector("article")
+              .addEventListener("click", () => visModal(ret));
+
+            section.appendChild(klon);
+          }
+        });
+      }
+
+      function visModal(ret) {
+        console.log("ret");
+        popup.style.display = "block";
+        modal.querySelector(".billede").src =
+          "medium/" + ret.billednavn + "-md.jpg";
+        modal.querySelector(".navn").textContent = ret.navn;
+        modal.querySelector(".langbeskrivelse").textContent =
+          ret.langbeskrivelse;
+        modal.querySelector(".pris").textContent = "Pris: " + ret.pris + " ,-";
+
+        modal.style.display = "block";
+        section.style.display = "none";
+      }
+
+      modal.addEventListener("click", () => (modal.style.display = "none"));
+      modal.addEventListener("click", () => (section.style.display = "grid"));
+    </script>
+    <script src="burger.js"></script>
+  </body>
+</html>
